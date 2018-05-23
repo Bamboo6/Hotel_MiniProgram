@@ -70,7 +70,7 @@ Page({
           tel: ordertel,
           appid: 'wx3599c412069d26f5',
           appsecret: 'd9c85151c35a319bc96f6d00945ec99a',
-          templateid: '5hDyt42_w1MUMuAgemfRgFje9XUtpT8sIix3A2Y9vRg'
+          templateid: '5hDyt42_w1MUMuAgemfRgMPs7p9pOaAiG4dNDtfgFb8'
         },
         header: {
           'content-type': 'application/x-www-form-urlencoded'
