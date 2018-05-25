@@ -10,7 +10,7 @@
         入住日期{{dateBegin}}
       </view>
     </picker>
-    <picker name="orderDateEnd" id='dateEnd' mode="date" start="{{tomorrow}}" end="finalDate" bindchange='bindDateChange'>
+    <picker name="orderDateEnd" id='dateEnd' mode="date" start="{{tomorrow}}" end="{{finalDate}}" bindchange='bindDateChange'>
       <view class='set'>
         离店日期{{dateEnd}}
       </view>

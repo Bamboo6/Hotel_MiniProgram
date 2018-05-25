@@ -1,4 +1,5 @@
 // pages/index/index.js
+// 全局的 getApp()函数，获取到小程序实例
 var app = getApp()
 Page({
 
@@ -13,6 +14,7 @@ Page({
 
   /**
    * 生命周期函数--监听页面加载
+   * 页面载入，初始化日期，这段代码不表示必须的，用于展示 js 的 prototype 方法机制
    */
   onLoad: function (options) {
     let today = new Date();
@@ -29,7 +31,9 @@ Page({
       var date = this.getDate()
       this.setDate(date + value)
     }
+    // 离店日期最早是明天
     tomorrow.addDate(1)
+    // 只能预订三个月以内的房间
     finalDate.addMonth(3)
     this.setData({
       today: today.getCHNDateString(),
@@ -37,7 +41,7 @@ Page({
       finalDate: finalDate.getCHNDateString()
     })
   },
-
+// 表单提交
   formSubmit: function (e) {
     var orderno = e.detail.value.orderNo
     var orderdatebegin = e.detail.value.orderDateBegin
@@ -46,24 +50,19 @@ Page({
     var ordertel = e.detail.value.orderTel
     var formid = e.detail.formId
     console.log(e.detail.formId)
-
+    // 校验输入为非空
     if (orderno == "" || orderdatebegin == "" || orderdateend == "" || ordername == "" || ordertel == ""){
       wx.showModal({
         title: '提示',
         content: '不能为空！'
       })
     }else {
-      wx.showToast({
-        title: '成功',
-        icon: 'success',
-        duration: 2000
-      }),
       wx.request({
-        url: 'https://wrysj9ff.qcloud.la/openid.php',
+        url: 'https://wrysj9ff.qcloud.la/openid.php',// 服务器信息
         data: {
           code: app.globalData.code,
           FORMID: formid,
-          dateBegin: orderdatebegin,
+          datebegin: orderdatebegin,
           dateend: orderdateend,
           no: orderno,
           name: ordername,
@@ -76,19 +75,24 @@ Page({
           'content-type': 'application/x-www-form-urlencoded'
         },
         success: function (res) {
+          wx.showToast({
+            title: res.data.errmsg,// 显示成功返回值
+            icon: 'success',
+            duration: 2000
+          }),
           console.log(res)
         }
       })
     }
   },
-
+  // 表单重置
   formReset:function (){
     this.setData({
       dateBegin: '',
       dateEnd: ''
     })
   },
-
+  // 日期选择
   bindDateChange: function (e){
     if(e.target.id=="dateBegin"){
       this.setData({
