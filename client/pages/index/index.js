@@ -58,7 +58,7 @@ Page({
       })
     }else {
       wx.request({
-        url: 'https://wrysj9ff.qcloud.la/openid.php',// 服务器信息
+        url: 'https://llm2isay.qcloud.la/openid.php',// 服务器信息
         data: {
           code: app.globalData.code,
           FORMID: formid,
@@ -67,9 +67,9 @@ Page({
           no: orderno,
           name: ordername,
           tel: ordertel,
-          appid: 'wx3599c412069d26f5',
-          appsecret: 'd9c85151c35a319bc96f6d00945ec99a',
-          templateid: '5hDyt42_w1MUMuAgemfRgMPs7p9pOaAiG4dNDtfgFb8'
+          // appid: 'wx3599c412069d26f5',
+          // appsecret: 'd9c85151c35a319bc96f6d00945ec99a',
+          // templateid: '5hDyt42_w1MUMuAgemfRgMPs7p9pOaAiG4dNDtfgFb8'
         },
         header: {
           'content-type': 'application/x-www-form-urlencoded'
